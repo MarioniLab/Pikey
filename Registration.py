@@ -6,6 +6,7 @@
 import numpy as np
 import skimage.io as skIO
 import imreg_dft
+import logging
 
 
 def register_images(ref_image, query_image):
@@ -85,7 +86,7 @@ def apply_transformation(hybe_image, scale=1.0, angle=0.0, x_trans=0.0, y_trans=
         Numpy array of registered hybridisation image
     '''
     
-    if not np.isclose(scale, 1.0, atol=0.001):
+    if not np.isclose(scale, 1.0, atol=0.1):
         logging.warning("The image scale parameter is not 1"
                         ", image sizes are different.  This may result "
                         "in unwanted image distortions")
